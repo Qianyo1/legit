@@ -38,20 +38,18 @@ getgenv().Aiming = {
     Enabled = true,
 
     ShowFOV = false,
-    FOV = 11.55,
-    FOVSides = 300,
-    FOVColour = Color3fromRGB(98, 37, 209),
+    FOV = 22,
+    FOVSides = 24,
+    FOVColour = Color3fromRGB(0, 147, 255),
 
     VisibleCheck = true,
     
-    HitChance = 110,
-
-    Resolver = false,
+    HitChance = 100,
 
     Selected = nil,
     SelectedPart = nil,
 
-    TargetPart = {"Head", "HumanoidRootPart", "LowerTorso"},
+    TargetPart = {"Head", "HumanoidRootPart"},
 
     Ignored = {
         Teams = {
@@ -436,21 +434,5 @@ Heartbeat:Connect(function()
     Aiming.GetClosestPlayerToCursor()
 end)
 
-if getgenv().Aiming.Resolver == true then
-  local RunService = game:GetService("RunService")
-
-RunService.Heartbeat:Connect(function()
-    pcall(function()
-        for i,v in pairs(game.Players:GetChildren()) do
-            if v.Name ~= game.Players.LocalPlayer.Name then
-                local hrp = v.Character.HumanoidRootPart
-                hrp.Velocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)    
-                hrp.AssemblyLinearVelocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)   
-            end
-        end
-    end)
-end)
-            end
-
 -- //
-return Aimingd
+return Aiming
